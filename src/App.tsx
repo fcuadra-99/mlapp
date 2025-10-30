@@ -81,19 +81,99 @@ function App() {
     return <span id={`counter-${end}`}>{count}{suffix}</span>;
   };
 
+  const Icon = ({ type }: { type: string }) => {
+    const icons: { [key: string]: JSX.Element } = {
+      analytics: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 3v18h18" />
+          <path d="M18 17V9" />
+          <path d="M13 17V5" />
+          <path d="M8 17v-3" />
+        </svg>
+      ),
+      target: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      ),
+      growth: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 20V10" />
+          <path d="M18 20V4" />
+          <path d="M6 20v-4" />
+        </svg>
+      ),
+      chart: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 3v18h18" />
+          <path d="m19 9-5 5-4-4-3 3" />
+        </svg>
+      ),
+      users: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      ),
+      gift: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="20 12 20 22 4 22 4 12" />
+          <rect x="2" y="7" width="20" height="5" />
+          <path d="M12 22V7" />
+          <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+          <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+        </svg>
+      ),
+      shield: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+      ),
+      mail: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+      ),
+      phone: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      ),
+      location: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+      ),
+      logo: (
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+      )
+    };
+    return icons[type] || null;
+  };
+
   return (
     <div className="app">
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="logo">
-            <span className="logo-icon">⚡</span>
+            <div className="logo-icon">
+              <Icon type="logo" />
+            </div>
             <span className="logo-text">ElectroSmart Analytics</span>
           </div>
           <ul className="nav-menu">
             <li><a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>Home</a></li>
             <li><a href="#overview" className={activeSection === 'overview' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('overview'); }}>Overview</a></li>
             <li><a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('services'); }}>Services</a></li>
-            <li><a href="#gallery" className={activeSection === 'gallery' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('gallery'); }}>Data in Action</a></li>
+            <li><a href="#gallery" className={activeSection === 'gallery' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('gallery'); }}>Analytics</a></li>
             <li><a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>About</a></li>
             <li><a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a></li>
           </ul>
@@ -139,17 +219,23 @@ function App() {
             </div>
             <div className="overview-features">
               <div className="feature-card">
-                <div className="feature-icon">📊</div>
+                <div className="feature-icon">
+                  <Icon type="analytics" />
+                </div>
                 <h3>Real-Time Insights</h3>
                 <p>Make informed decisions with live analytics dashboards</p>
               </div>
               <div className="feature-card">
-                <div className="feature-icon">🎯</div>
+                <div className="feature-icon">
+                  <Icon type="target" />
+                </div>
                 <h3>Precision Targeting</h3>
                 <p>Reach the right customers with AI-driven segmentation</p>
               </div>
               <div className="feature-card">
-                <div className="feature-icon">🚀</div>
+                <div className="feature-icon">
+                  <Icon type="growth" />
+                </div>
                 <h3>Business Growth</h3>
                 <p>Accelerate revenue with predictive forecasting</p>
               </div>
@@ -164,25 +250,33 @@ function App() {
           <p className="section-subtitle">Cutting-edge machine learning solutions tailored for electronics retail</p>
           <div className="services-grid">
             <div className="service-card">
-              <div className="service-icon">📈</div>
+              <div className="service-icon">
+                <Icon type="chart" />
+              </div>
               <h3>Sales Forecasting</h3>
               <p className="service-tech">Linear Regression</p>
               <p>Predict future sales trends with precision using advanced regression models. Optimize inventory levels and plan marketing campaigns based on accurate demand forecasts.</p>
             </div>
             <div className="service-card">
-              <div className="service-icon">👥</div>
+              <div className="service-icon">
+                <Icon type="users" />
+              </div>
               <h3>Customer Segmentation</h3>
               <p className="service-tech">Naive Bayes • Decision Tree</p>
               <p>Identify distinct customer groups based on purchasing behavior, preferences, and demographics. Tailor your marketing strategies for maximum impact.</p>
             </div>
             <div className="service-card">
-              <div className="service-icon">🎁</div>
+              <div className="service-icon">
+                <Icon type="gift" />
+              </div>
               <h3>Product Recommendation</h3>
               <p className="service-tech">KNN • ANN</p>
               <p>Boost cross-selling and upselling with intelligent product recommendations. Our neural networks learn customer preferences to suggest the perfect products.</p>
             </div>
             <div className="service-card">
-              <div className="service-icon">🛡️</div>
+              <div className="service-icon">
+                <Icon type="shield" />
+              </div>
               <h3>Fraud Detection</h3>
               <p className="service-tech">Support Vector Machine</p>
               <p>Protect your business from fraudulent transactions with real-time risk analysis. Our SVM models identify suspicious patterns before they impact your bottom line.</p>
@@ -316,16 +410,31 @@ function App() {
               <p>Schedule a demo to see ElectroSmart Analytics in action, or request a custom analytics report for your business.</p>
               <div className="contact-details">
                 <div className="contact-item">
-                  <span className="contact-icon">📧</span>
-                  <span>contact@electrosmart.ai</span>
+                  <div className="contact-icon">
+                    <Icon type="mail" />
+                  </div>
+                  <div>
+                    <div className="contact-label">Email</div>
+                    <div className="contact-value">contact@electrosmart.ai</div>
+                  </div>
                 </div>
                 <div className="contact-item">
-                  <span className="contact-icon">📞</span>
-                  <span>+1 (555) 123-4567</span>
+                  <div className="contact-icon">
+                    <Icon type="phone" />
+                  </div>
+                  <div>
+                    <div className="contact-label">Phone</div>
+                    <div className="contact-value">+1 (555) 123-4567</div>
+                  </div>
                 </div>
                 <div className="contact-item">
-                  <span className="contact-icon">📍</span>
-                  <span>San Francisco, CA</span>
+                  <div className="contact-icon">
+                    <Icon type="location" />
+                  </div>
+                  <div>
+                    <div className="contact-label">Location</div>
+                    <div className="contact-value">San Francisco, CA</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -354,7 +463,9 @@ function App() {
           <div className="footer-content">
             <div className="footer-brand">
               <div className="logo">
-                <span className="logo-icon">⚡</span>
+                <div className="logo-icon">
+                  <Icon type="logo" />
+                </div>
                 <span className="logo-text">ElectroSmart Analytics</span>
               </div>
               <p>Powering smarter decisions for electronics retail through AI-driven analytics.</p>
