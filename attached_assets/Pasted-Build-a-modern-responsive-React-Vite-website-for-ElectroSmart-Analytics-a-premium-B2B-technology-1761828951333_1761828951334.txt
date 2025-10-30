@@ -1,0 +1,136 @@
+Build a modern, responsive React (Vite) website for ElectroSmart Analytics, a premium B2B technology company that helps electronics retailers optimize sales, inventory, and customer engagement through AI-powered analytics.
+
+Use Tailwind CSS for styling, MagicUI components for animations/visuals, and React Router for navigation between pages. All components must follow a modular folder structure for clarity and scalability.
+
+Include the following features and deliverables:
+
+📁 Project Structure (required)
+src/
+ ├─ components/
+ │   ├─ Navbar/
+ │   │   ├─ Navbar.tsx
+ │   │   └─ navbar.module.css (or tailwind-only)
+ │   ├─ Footer.tsx
+ │   ├─ AnimatedStats.tsx
+ │   ├─ Button.tsx
+ │   └─ ScrollReveal.tsx
+ │
+ ├─ pages/
+ │   ├─ Home.tsx
+ │   ├─ About.tsx
+ │   ├─ Gallery.tsx
+ │   ├─ Insights.tsx
+ │   ├─ Contact.tsx
+ │   ├─ Blog.tsx
+ │   └─ services/
+ │        ├─ index.tsx                // Services hub page (links to each service)
+ │        ├─ sales-forecasting/
+ │        │    ├─ SalesForecasting.tsx
+ │        │    └─ README.md
+ │        ├─ customer-segmentation/
+ │        │    ├─ CustomerSegmentation.tsx
+ │        │    └─ README.md
+ │        ├─ product-recommendation/
+ │        │    ├─ ProductRecommendation.tsx
+ │        │    └─ README.md
+ │        └─ fraud-detection/
+ │             ├─ FraudDetection.tsx
+ │             └─ README.md
+ │
+ ├─ App.tsx
+ ├─ main.tsx
+ ├─ index.css
+ └─ assets/
+      └─ mock-charts/ (svg/png placeholders)
+
+🧭 Routes (React Router)
+
+/ → Home
+
+/about → About
+
+/gallery → Gallery
+
+/insights → Insights
+
+/blog → Blog
+
+/contact → Contact
+
+/services → Services hub (index)
+
+/services/sales-forecasting → SalesForecasting page
+
+/services/customer-segmentation → CustomerSegmentation page
+
+/services/product-recommendation → ProductRecommendation page
+
+/services/fraud-detection → FraudDetection page
+
+🧩 Reusable Components (specs)
+
+Navbar (component folder): sticky, responsive, logo, links to all pages, a Services dropdown with links to the four service subpages, CTA button “Request Demo”. Use smooth scrolling and active link highlighting.
+
+Footer: minimal site links and social icons.
+
+AnimatedStats: animated counters (e.g., “95% prediction accuracy”, “+30% sales growth”, “120+ clients”) using MagicUI or framer-motion.
+
+Button: reusable button component with variants (primary, ghost).
+
+ScrollReveal: HOC or wrapper to add entrance animations to any section.
+
+🎨 Design & Styling
+
+Use Tailwind CSS and Tailwind utilities exclusively for layout and styling; keep styles modular.
+
+Colors: dark slate (#0f172a), accent blue (#2563eb), cyan (#38bdf8), light gray (#f3f4f6), white.
+
+Font: “Inter” or “Outfit”.
+
+Visual style: futuristic, professional — soft gradients, glass panels, subtle glows.
+
+Use lucide-react for icons.
+
+✨ Landing Page (Home.tsx) — Must include:
+
+Hero section with headline: “Powering Smarter Decisions for Electronics Retail.”
+
+Short mission paragraph.
+
+CTA button to Contact.
+
+Services preview with four cards linking to service subpages (Sales Forecasting, Customer Segmentation, Product Recommendation, Fraud Detection).
+
+“Data in Action” gallery with mock charts (use placeholder images or small Recharts components).
+
+About summary describing usage of the E-commerce Purchase History Dataset.
+
+Why Choose Us + AnimatedStats.
+
+Contact section/short form with CTA.
+
+🔬 Services Subpages (each)
+
+Each subpage must:
+
+Reuse Navbar and Footer.
+
+Have a hero/title for the service (e.g., “Sales Forecasting”).
+
+Short explanation of the algorithm(s) used:
+
+Sales Forecasting → Linear Regression
+
+Customer Segmentation → Naive Bayes, Decision Tree
+
+Product Recommendation → KNN, ANN
+
+Fraud Detection → SVM
+
+A sample/mock visualization area (chart or example prediction output).
+
+Bullet list of real-world benefits for retailers.
+
+Placeholder area for dataset info and methodology.
+
+README.md in each service folder describing how to add real model code later.
