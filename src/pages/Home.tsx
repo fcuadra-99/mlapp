@@ -3,6 +3,10 @@ import { ArrowRight, TrendingUp, Users, ShoppingBag, Shield, BarChart3, Mail } f
 import Button from '../components/Button';
 import AnimatedStats from '../components/AnimatedStats';
 import ScrollReveal from '../components/ScrollReveal';
+import { AnimatedGridPattern } from '../components/ui/animated-grid-pattern';
+import { DotPattern } from '../components/ui/dot-pattern';
+import { Particles } from '../components/ui/particles';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
   const stats = [
@@ -41,60 +45,82 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 via-transparent to-accent-cyan/20"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 via-slate-dark to-accent-cyan/20"></div>
+        <AnimatedGridPattern
+          numSquares={30}
+          maxOpacity={0.1}
+          duration={3}
+          repeatDelay={1}
+          className={cn(
+            "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
+            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 text-accent-cyan/30"
+          )}
+        />
+        <Particles
+          className="absolute inset-0"
+          quantity={80}
+          ease={70}
+          color="#22d3ee"
+          refresh
+        />
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
           <ScrollReveal>
-            <div className="inline-block px-4 py-2 bg-accent-cyan/10 border border-accent-cyan/30 rounded-full mb-6">
-              <span className="text-accent-cyan font-semibold">Trusted by 500+ Retailers</span>
+            <div className="inline-block px-4 py-2 sm:px-6 sm:py-2.5 bg-accent-cyan/10 border border-accent-cyan/30 rounded-full mb-6 sm:mb-8">
+              <span className="text-accent-cyan font-semibold text-sm sm:text-base">Trusted by 500+ Retailers</span>
             </div>
           </ScrollReveal>
           
           <ScrollReveal delay={0.2}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-accent-cyan to-accent-blue bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-white via-accent-cyan to-accent-blue bg-clip-text text-transparent leading-tight px-4">
               Powering Smarter Decisions for Electronics Retail
             </h1>
           </ScrollReveal>
           
           <ScrollReveal delay={0.4}>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto px-4 leading-relaxed">
               Transform your business with predictive insights that increase revenue by 30%, 
               optimize inventory, and enhance customer engagement through AI-powered analytics.
             </p>
           </ScrollReveal>
           
           <ScrollReveal delay={0.6}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button variant="primary" className="group">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button variant="primary" className="group w-full sm:w-auto min-h-[48px]">
                   Get Started
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Button variant="ghost">Watch Demo</Button>
+              <Button variant="ghost" className="w-full sm:w-auto min-h-[48px]">Watch Demo</Button>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-transparent to-slate-dark/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-b from-transparent to-slate-dark/50 overflow-hidden">
+        <DotPattern
+          className={cn(
+            "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+            "opacity-30"
+          )}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Our Services</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16">Our Services</h2>
           </ScrollReveal>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <Link to={service.link}>
-                  <div className="glass rounded-xl p-6 hover:glow transition-all duration-300 group cursor-pointer h-full">
+                <Link to={service.link} className="block h-full">
+                  <div className="glass rounded-xl p-6 sm:p-8 hover:glow transition-all duration-300 group cursor-pointer h-full flex flex-col min-h-[280px] active:scale-95">
                     <div className="text-accent-cyan mb-4 group-hover:scale-110 transition-transform">
                       {service.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                    <p className="text-gray-400 mb-4">{service.description}</p>
-                    <div className="flex items-center text-accent-cyan group-hover:translate-x-2 transition-transform">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-3">{service.title}</h3>
+                    <p className="text-gray-400 mb-4 flex-grow text-base sm:text-lg">{service.description}</p>
+                    <div className="flex items-center text-accent-cyan group-hover:translate-x-2 transition-transform font-medium">
                       Learn more <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
                   </div>
@@ -105,22 +131,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-16 sm:py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">Data in Action</h2>
-              <p className="text-gray-400 text-lg">Real insights from real data</p>
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Data in Action</h2>
+              <p className="text-gray-400 text-base sm:text-lg">Real insights from real data</p>
             </div>
           </ScrollReveal>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {[1, 2, 3].map((item, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="glass rounded-xl p-6 aspect-square flex items-center justify-center">
+                <div className="glass rounded-xl p-6 sm:p-8 aspect-square flex items-center justify-center min-h-[250px]">
                   <div className="text-center">
-                    <BarChart3 className="w-20 h-20 mx-auto mb-4 text-accent-cyan" />
-                    <p className="text-gray-400">Chart Placeholder {item}</p>
+                    <BarChart3 className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 text-accent-cyan" />
+                    <p className="text-gray-400 text-sm sm:text-base">Chart Placeholder {item}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -129,12 +155,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-transparent to-slate-dark/50">
+      <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-b from-transparent to-slate-dark/50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">About Our Data</h2>
-              <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">About Our Data</h2>
+              <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
                 We leverage the comprehensive E-commerce Purchase History Dataset to train our models, 
                 ensuring accurate predictions and actionable insights for your retail business.
               </p>
@@ -143,27 +169,33 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-16 sm:py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Why Choose Us</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16">Why Choose Us</h2>
           </ScrollReveal>
           
           <AnimatedStats stats={stats} />
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-transparent to-slate-dark/50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-b from-transparent to-slate-dark/50 overflow-hidden">
+        <DotPattern
+          className={cn(
+            "[mask-image:linear-gradient(to_bottom,transparent,white,transparent)]",
+            "opacity-20"
+          )}
+        />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="glass rounded-2xl p-8 md:p-12 text-center">
-              <Mail className="w-16 h-16 mx-auto mb-6 text-accent-cyan" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
-              <p className="text-gray-400 mb-8">
+            <div className="glass rounded-2xl p-6 sm:p-8 md:p-12 text-center">
+              <Mail className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-6 text-accent-cyan" />
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">Ready to Transform Your Business?</h2>
+              <p className="text-gray-400 mb-8 text-base sm:text-lg leading-relaxed">
                 Get in touch with our team to learn how ElectroSmart Analytics can help you achieve your goals.
               </p>
-              <Link to="/contact">
-                <Button variant="primary" className="group">
+              <Link to="/contact" className="inline-block w-full sm:w-auto">
+                <Button variant="primary" className="group w-full sm:w-auto min-h-[48px]">
                   Contact Us
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
