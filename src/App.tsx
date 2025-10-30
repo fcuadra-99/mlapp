@@ -36,7 +36,7 @@ function App() {
                 </linearGradient>
               </defs>
             </svg>
-            <span className="nav-logo-text">ElectroSmart</span>
+            <span>6 7</span>
           </div>
           
           <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
