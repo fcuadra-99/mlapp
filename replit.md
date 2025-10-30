@@ -13,7 +13,9 @@ This is a React application built with TypeScript and Vite. It provides a minima
 - **October 30, 2025**: Configured for Replit environment
   - Vite server configured to run on port 5000 with host 0.0.0.0
   - HMR configured for Replit proxy (wss protocol on port 443)
+  - Added `allowedHosts: true` to allow all proxy domains
   - Workflow set up for development server
+  - Deployment configured for autoscale with Vite preview
 
 ## Project Architecture
 - `src/` - Source code directory
