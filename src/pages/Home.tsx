@@ -134,50 +134,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Data in Action</h2>
-              <p className="text-gray-400 text-base sm:text-lg">Real insights from real data</p>
-            </div>
-          </ScrollReveal>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <ScrollReveal delay={0.1}>
-              <div className="glass rounded-xl aspect-square flex items-center justify-center min-h-[300px]">
-                <BarChart
-                  data={[45, 78, 62, 88, 95, 72, 84]}
-                  labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
-                  title="Weekly Sales ($1000s)"
-                  color="#00D9FF"
-                />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <div className="glass rounded-xl aspect-square flex items-center justify-center min-h-[300px]">
-                <LineChart
-                  data={[32, 45, 38, 52, 48, 65, 58, 72, 68, 85, 78, 92]}
-                  labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
-                  title="Revenue Growth Trend"
-                  color="#0099CC"
-                />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.3}>
-              <div className="glass rounded-xl aspect-square flex items-center justify-center min-h-[300px]">
-                <PieChart
-                  data={[35, 28, 22, 15]}
-                  labels={['Smartphones', 'Laptops', 'Tablets', 'Accessories']}
-                  title="Product Category Sales"
-                  colors={['#00D9FF', '#0099CC', '#006699', '#003D5C']}
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
       <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-b from-transparent to-slate-dark/50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>

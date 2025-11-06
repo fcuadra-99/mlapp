@@ -10,13 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "@tensorflow/tfjs": "^4.22.0",
     "@types/node": "^24.9.2",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.548.0",
+    "ml-naivebayes": "^4.0.0",
+    "ml-regression": "^6.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.9.5",
+    "recharts": "^3.3.0",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {

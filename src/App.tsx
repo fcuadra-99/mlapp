@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer';
-import BalatroBg from './components/BalatroBg';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -28,7 +27,6 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <BalatroBg />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-1">
