@@ -18,7 +18,7 @@ export default function ServicesHub() {
     {
       icon: <Users className="w-12 h-12 sm:w-16 sm:h-16" />,
       title: 'Customer Segmentation',
-      description: 'Understand your customers better with Naive Bayes and Decision Tree algorithms for precise segmentation.',
+      description: 'Understand your customers better with KNN and ANN algorithms for precise segmentation.',
       features: ['Buyer personas', 'Behavioral grouping', 'Value segmentation', 'Churn prediction'],
       link: '/services/customer-segmentation',
       color: 'from-purple-500 to-pink-500',
@@ -26,7 +26,7 @@ export default function ServicesHub() {
     {
       icon: <ShoppingBag className="w-12 h-12 sm:w-16 sm:h-16" />,
       title: 'Product Recommendation',
-      description: 'Boost sales with personalized recommendations powered by KNN and ANN algorithms.',
+      description: 'Boost sales with personalized recommendations powered by Naive Bayes and Decision Tree algorithms.',
       features: ['Personalized suggestions', 'Cross-sell optimization', 'Upsell strategies', 'Bundle recommendations'],
       link: '/services/product-recommendation',
       color: 'from-green-500 to-emerald-500',
