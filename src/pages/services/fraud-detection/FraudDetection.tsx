@@ -1,8 +1,9 @@
 import ScrollReveal from '../../../components/ScrollReveal';
-import { Shield, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Shield, CheckCircle } from 'lucide-react';
 import { AnimatedGridPattern } from '../../../components/ui/animated-grid-pattern';
 import { DotPattern } from '../../../components/ui/dot-pattern';
 import { cn } from '@/lib/utils';
+import BarChart from '../../../components/Charts/BarChart';
 
 export default function FraudDetection() {
   const benefits = [
@@ -95,14 +96,13 @@ export default function FraudDetection() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.4}>
-              <div className="glass rounded-xl p-6 sm:p-8 flex items-center justify-center min-h-[280px]">
-                <div className="text-center">
-                  <AlertTriangle className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 text-accent-cyan" />
-                  <p className="text-gray-400">Fraud Risk Scoring</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Real-time risk assessment dashboard
-                  </p>
-                </div>
+              <div className="glass rounded-xl p-6 sm:p-8 min-h-[280px]">
+                <BarChart
+                  data={[2, 5, 3, 8, 4, 6, 3]}
+                  labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+                  title="Fraud Attempts Blocked"
+                  color="#EF4444"
+                />
               </div>
             </ScrollReveal>
           </div>

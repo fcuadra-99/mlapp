@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import Button from '../Button';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,10 +40,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-
-            <Button variant="primary" className="ml-4">
-              Request Demo
-            </Button>
           </div>
 
           <button
@@ -74,12 +69,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            
-            <div className="pt-4">
-              <Button variant="primary" className="w-full justify-center min-h-[48px] text-base font-medium">
-                Request Demo
-              </Button>
-            </div>
           </div>
         </div>
       )}

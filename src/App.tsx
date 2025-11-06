@@ -1,6 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer';
+import BalatroBg from './components/BalatroBg';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -12,9 +14,21 @@ import CustomerSegmentation from './pages/services/customer-segmentation/Custome
 import ProductRecommendation from './pages/services/product-recommendation/ProductRecommendation';
 import FraudDetection from './pages/services/fraud-detection/FraudDetection';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
+      <BalatroBg />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-1">

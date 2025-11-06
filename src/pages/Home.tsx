@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, Users, ShoppingBag, Shield, BarChart3, Mail } from 'lucide-react';
+import { ArrowRight, TrendingUp, Users, ShoppingBag, Shield, Mail } from 'lucide-react';
 import Button from '../components/Button';
 import AnimatedStats from '../components/AnimatedStats';
 import ScrollReveal from '../components/ScrollReveal';
@@ -7,6 +7,9 @@ import { AnimatedGridPattern } from '../components/ui/animated-grid-pattern';
 import { DotPattern } from '../components/ui/dot-pattern';
 import { Particles } from '../components/ui/particles';
 import { cn } from '@/lib/utils';
+import BarChart from '../components/Charts/BarChart';
+import LineChart from '../components/Charts/LineChart';
+import PieChart from '../components/Charts/PieChart';
 
 export default function Home() {
   const stats = [
@@ -141,16 +144,36 @@ export default function Home() {
           </ScrollReveal>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {[1, 2, 3].map((item, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="glass rounded-xl p-6 sm:p-8 aspect-square flex items-center justify-center min-h-[250px]">
-                  <div className="text-center">
-                    <BarChart3 className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 text-accent-cyan" />
-                    <p className="text-gray-400 text-sm sm:text-base">Chart Placeholder {item}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+            <ScrollReveal delay={0.1}>
+              <div className="glass rounded-xl aspect-square flex items-center justify-center min-h-[300px]">
+                <BarChart
+                  data={[45, 78, 62, 88, 95, 72, 84]}
+                  labels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+                  title="Weekly Sales ($1000s)"
+                  color="#00D9FF"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <div className="glass rounded-xl aspect-square flex items-center justify-center min-h-[300px]">
+                <LineChart
+                  data={[32, 45, 38, 52, 48, 65, 58, 72, 68, 85, 78, 92]}
+                  labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+                  title="Revenue Growth Trend"
+                  color="#0099CC"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.3}>
+              <div className="glass rounded-xl aspect-square flex items-center justify-center min-h-[300px]">
+                <PieChart
+                  data={[35, 28, 22, 15]}
+                  labels={['Smartphones', 'Laptops', 'Tablets', 'Accessories']}
+                  title="Product Category Sales"
+                  colors={['#00D9FF', '#0099CC', '#006699', '#003D5C']}
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

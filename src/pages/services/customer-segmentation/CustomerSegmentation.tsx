@@ -1,8 +1,9 @@
 import ScrollReveal from '../../../components/ScrollReveal';
-import { Users, CheckCircle, PieChart } from 'lucide-react';
+import { Users, CheckCircle } from 'lucide-react';
 import { AnimatedGridPattern } from '../../../components/ui/animated-grid-pattern';
 import { Particles } from '../../../components/ui/particles';
 import { cn } from '@/lib/utils';
+import PieChart from '../../../components/Charts/PieChart';
 
 export default function CustomerSegmentation() {
   const benefits = [
@@ -95,14 +96,13 @@ export default function CustomerSegmentation() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.4}>
-              <div className="glass rounded-xl p-6 sm:p-8 flex items-center justify-center min-h-[280px]">
-                <div className="text-center">
-                  <PieChart className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 text-accent-cyan" />
-                  <p className="text-gray-400">Sample Segmentation Chart</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Visual breakdown of customer segments
-                  </p>
-                </div>
+              <div className="glass rounded-xl p-6 sm:p-8 min-h-[280px]">
+                <PieChart
+                  data={[30, 25, 22, 15, 8]}
+                  labels={['Premium', 'Regular', 'Occasional', 'First-time', 'Dormant']}
+                  title="Customer Segments"
+                  colors={['#A855F7', '#C084FC', '#E879F9', '#F0ABFC', '#FAE8FF']}
+                />
               </div>
             </ScrollReveal>
           </div>

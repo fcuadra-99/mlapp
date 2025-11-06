@@ -1,8 +1,9 @@
 import ScrollReveal from '../../../components/ScrollReveal';
-import { ShoppingBag, CheckCircle, BarChart3 } from 'lucide-react';
+import { ShoppingBag, CheckCircle } from 'lucide-react';
 import { DotPattern } from '../../../components/ui/dot-pattern';
 import { Particles } from '../../../components/ui/particles';
 import { cn } from '@/lib/utils';
+import BarChart from '../../../components/Charts/BarChart';
 
 export default function ProductRecommendation() {
   const benefits = [
@@ -91,14 +92,13 @@ export default function ProductRecommendation() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.4}>
-              <div className="glass rounded-xl p-6 sm:p-8 flex items-center justify-center min-h-[280px]">
-                <div className="text-center">
-                  <BarChart3 className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 text-accent-cyan" />
-                  <p className="text-gray-400">Recommendation Accuracy</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Performance metrics and A/B test results
-                  </p>
-                </div>
+              <div className="glass rounded-xl p-6 sm:p-8 min-h-[280px]">
+                <BarChart
+                  data={[82, 88, 91, 94, 89, 93, 95]}
+                  labels={['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7']}
+                  title="Recommendation Accuracy (%)"
+                  color="#10B981"
+                />
               </div>
             </ScrollReveal>
           </div>

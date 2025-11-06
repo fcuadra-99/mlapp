@@ -1,8 +1,9 @@
 import ScrollReveal from '../../../components/ScrollReveal';
-import { TrendingUp, CheckCircle, BarChart3 } from 'lucide-react';
+import { TrendingUp, CheckCircle } from 'lucide-react';
 import { AnimatedGridPattern } from '../../../components/ui/animated-grid-pattern';
 import { DotPattern } from '../../../components/ui/dot-pattern';
 import { cn } from '@/lib/utils';
+import LineChart from '../../../components/Charts/LineChart';
 
 export default function SalesForecasting() {
   const benefits = [
@@ -82,14 +83,13 @@ export default function SalesForecasting() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.4}>
-              <div className="glass rounded-xl p-6 sm:p-8 flex items-center justify-center min-h-[280px]">
-                <div className="text-center">
-                  <BarChart3 className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 text-accent-cyan" />
-                  <p className="text-gray-400">Sample Forecast Visualization</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Interactive charts show predicted vs. actual sales
-                  </p>
-                </div>
+              <div className="glass rounded-xl p-6 sm:p-8 min-h-[280px]">
+                <LineChart
+                  data={[28, 32, 30, 38, 42, 45, 48, 52, 55, 58, 61, 65]}
+                  labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+                  title="Sales Forecast vs Actual"
+                  color="#0099FF"
+                />
               </div>
             </ScrollReveal>
           </div>
