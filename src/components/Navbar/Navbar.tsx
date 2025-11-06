@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Button from '../Button';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -13,17 +12,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Insights', path: '/insights' },
-    { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
-  ];
-
-  const serviceLinks = [
-    { name: 'Sales Forecasting', path: '/services/sales-forecasting' },
-    { name: 'Customer Segmentation', path: '/services/customer-segmentation' },
-    { name: 'Product Recommendation', path: '/services/product-recommendation' },
-    { name: 'Fraud Detection', path: '/services/fraud-detection' },
   ];
 
   return (
@@ -51,42 +40,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            
-            <div className="relative group">
-              <button
-                className="px-3 lg:px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 flex items-center gap-1 transition-all text-sm lg:text-base font-medium"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                Services
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              
-              {servicesOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-64 glass rounded-lg py-2 shadow-xl border border-white/10"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
-                >
-                  <Link
-                    to="/services"
-                    className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-cyan transition-all font-medium"
-                  >
-                    All Services
-                  </Link>
-                  <div className="border-t border-white/10 my-2"></div>
-                  {serviceLinks.map((service) => (
-                    <Link
-                      key={service.path}
-                      to={service.path}
-                      className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-cyan transition-all"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
 
             <Button variant="primary" className="ml-4">
               Request Demo
@@ -120,38 +73,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            
-            <div className="pt-2">
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="w-full px-4 py-3 rounded-lg text-gray-300 hover:bg-white/5 flex items-center justify-between font-medium text-base min-h-[48px]"
-              >
-                <span>Services</span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {servicesOpen && (
-                <div className="mt-2 ml-4 space-y-1">
-                  <Link
-                    to="/services"
-                    onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 rounded-lg text-gray-300 hover:bg-white/5 active:bg-white/10 min-h-[48px] flex items-center"
-                  >
-                    All Services
-                  </Link>
-                  {serviceLinks.map((service) => (
-                    <Link
-                      key={service.path}
-                      to={service.path}
-                      onClick={() => setIsOpen(false)}
-                      className="block px-4 py-3 rounded-lg text-gray-300 hover:bg-white/5 active:bg-white/10 text-sm min-h-[48px] flex items-center"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
             
             <div className="pt-4">
               <Button variant="primary" className="w-full justify-center min-h-[48px] text-base font-medium">
