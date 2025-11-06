@@ -7,9 +7,6 @@ import { AnimatedGridPattern } from '../components/ui/animated-grid-pattern';
 import { DotPattern } from '../components/ui/dot-pattern';
 import { Particles } from '../components/ui/particles';
 import { cn } from '@/lib/utils';
-import BarChart from '../components/Charts/BarChart';
-import LineChart from '../components/Charts/LineChart';
-import PieChart from '../components/Charts/PieChart';
 
 export default function Home() {
   const stats = [

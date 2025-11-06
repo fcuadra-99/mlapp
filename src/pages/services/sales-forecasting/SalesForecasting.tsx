@@ -75,6 +75,8 @@ export default function SalesForecasting() {
   const [result, setResult] = useState<number | null>(null);
   const [predictions, setPredictions] = useState<PredictionRecord[]>([]);
 
+  console.log(setData, trainingHistory);
+
   // Normalize data
   const normalizeData = (data: number[]) => {
     const min = Math.min(...data);

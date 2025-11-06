@@ -6,8 +6,6 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, Shield, AlertTriangle, Info, Loader2 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import ScrollReveal from "../../../components/ScrollReveal";
-import { DotPattern } from "../../../components/ui/dot-pattern";
 import { AnimatedGridPattern } from "../../../components/ui/animated-grid-pattern";
 import { cn } from "@/lib/utils";
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ScrollReveal from '../../../components/ScrollReveal';
-import { Users, CheckCircle, ShoppingBag, Target, Brain, TrendingUp } from 'lucide-react';
+import { CheckCircle, Target, Brain, TrendingUp } from 'lucide-react';
 import { AnimatedGridPattern } from '../../../components/ui/animated-grid-pattern';
 import { Particles } from '../../../components/ui/particles';
 import { cn } from '@/lib/utils';
@@ -42,9 +42,6 @@ const brandMap: Record<string, number> = {
 };
 const categoryMap: Record<string, number> = {
   gaming: 0, laptops: 1, tablets: 2, smartphones: 3, audio: 4, cameras: 5
-};
-const reverseCategoryMap: Record<number, string> = {
-  0: 'gaming', 1: 'laptops', 2: 'tablets', 3: 'smartphones', 4: 'audio', 5: 'cameras'
 };
 
 // Decision Tree based prediction
@@ -163,6 +160,7 @@ const generateDecisionTreeReasoning = (
     const matchingCustomers = categoryCustomers.filter(customer => 
       customer[feature as keyof CustomerData] === featureValue
     );
+    weight;
 
     if (matchingCustomers.length > 0) {
       const matchPercentage = Math.round((matchingCustomers.length / categoryCustomers.length) * 100);
@@ -170,6 +168,7 @@ const generateDecisionTreeReasoning = (
         reasoning.push(`Strong ${feature} match (${matchPercentage}% of similar customers)`);
       }
     }
+    category
   });
 
   if (reasoning.length === 0) {
@@ -189,6 +188,9 @@ const calculateEnsembleProbabilities = (
   // Get predictions from both algorithms
   const nbResults = calculateProbabilities(input, trainingData);
   const dtResults = predictWithDecisionTree(input, trainingData);
+
+  nbClassifier;
+  dtClassifier;
 
   const ensembleResults: ProductRecommendation[] = [];
   const categories = Object.keys(categoryMap);
@@ -332,6 +334,9 @@ export default function ProductRecommendation() {
   const [dtClassifier, setDtClassifier] = useState<DecisionTreeClassifier | null>(null);
   const [isTrained, setIsTrained] = useState(false);
   const [algorithmMode, setAlgorithmMode] = useState<'ensemble' | 'naive_bayes' | 'decision_tree'>('ensemble');
+
+
+  isTrained;
 
   // Train both models on component mount
   useEffect(() => {

@@ -66,7 +66,7 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-3 rounded-lg transition-all font-medium text-base min-h-[48px] flex items-center space-x-3 ${
+                  className={`px-4 py-3 rounded-lg transition-all font-medium text-base min-h-[48px] flex items-center space-x-3 ${
                     isActive(link.path)
                       ? 'text-accent-cyan bg-accent-cyan/10'
                       : 'text-gray-300 hover:bg-white/5 active:bg-white/10'
