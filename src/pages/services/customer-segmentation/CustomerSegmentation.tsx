@@ -85,37 +85,9 @@ export default function CustomerSegmentation() {
     const segmentsData: Segment[] = [
       // Premium Tech Enthusiasts
       { name: 'Premium Tech Enthusiasts', color: '#A855F7', features: [4000, 12, 333, 7, 0.9, 0.1, 0.6] },
-      { name: 'Premium Tech Enthusiasts', color: '#A855F7', features: [4200, 14, 350, 6, 0.92, 0.12, 0.63] },
-      { name: 'Premium Tech Enthusiasts', color: '#A855F7', features: [3850, 10, 320, 8, 0.88, 0.09, 0.59] },
-      { name: 'Premium Tech Enthusiasts', color: '#A855F7', features: [4100, 11, 340, 9, 0.91, 0.08, 0.62] },
-      { name: 'Premium Tech Enthusiasts', color: '#A855F7', features: [3950, 13, 330, 5, 0.93, 0.11, 0.65] },
-
-      // Budget Conscious
       { name: 'Budget Conscious', color: '#C084FC', features: [1200, 6, 200, 30, 0.4, 0.9, 0.3] },
-      { name: 'Budget Conscious', color: '#C084FC', features: [1100, 5, 180, 35, 0.38, 0.88, 0.29] },
-      { name: 'Budget Conscious', color: '#C084FC', features: [1300, 7, 210, 25, 0.42, 0.91, 0.32] },
-      { name: 'Budget Conscious', color: '#C084FC', features: [1250, 6, 190, 28, 0.41, 0.89, 0.31] },
-      { name: 'Budget Conscious', color: '#C084FC', features: [1150, 5, 205, 32, 0.39, 0.92, 0.28] },
-
-      // Brand Loyalists
       { name: 'Brand Loyalists', color: '#E879F9', features: [2800, 10, 280, 12, 0.6, 0.4, 0.9] },
-      { name: 'Brand Loyalists', color: '#E879F9', features: [2950, 11, 290, 10, 0.62, 0.38, 0.92] },
-      { name: 'Brand Loyalists', color: '#E879F9', features: [2700, 9, 275, 14, 0.58, 0.43, 0.88] },
-      { name: 'Brand Loyalists', color: '#E879F9', features: [2850, 10, 285, 13, 0.61, 0.39, 0.91] },
-      { name: 'Brand Loyalists', color: '#E879F9', features: [3000, 12, 300, 9, 0.63, 0.37, 0.93] },
-
-      // Casual Shoppers
-      { name: 'Casual Shoppers', color: '#F0ABFC', features: [1800, 4, 450, 45, 0.5, 0.6, 0.5] },
-      { name: 'Casual Shoppers', color: '#F0ABFC', features: [1700, 3, 460, 50, 0.48, 0.58, 0.47] },
-      { name: 'Casual Shoppers', color: '#F0ABFC', features: [1850, 5, 440, 40, 0.52, 0.61, 0.53] },
-      { name: 'Casual Shoppers', color: '#F0ABFC', features: [1900, 4, 470, 42, 0.49, 0.59, 0.49] },
       { name: 'Casual Shoppers', color: '#F0ABFC', features: [1750, 3, 455, 47, 0.51, 0.6, 0.52] },
-
-      // Gift Buyers
-      { name: 'Gift Buyers', color: '#FAE8FF', features: [900, 2, 450, 90, 0.3, 0.7, 0.4] },
-      { name: 'Gift Buyers', color: '#FAE8FF', features: [950, 3, 460, 85, 0.32, 0.68, 0.42] },
-      { name: 'Gift Buyers', color: '#FAE8FF', features: [880, 2, 440, 92, 0.28, 0.72, 0.39] },
-      { name: 'Gift Buyers', color: '#FAE8FF', features: [910, 3, 455, 88, 0.31, 0.7, 0.41] },
       { name: 'Gift Buyers', color: '#FAE8FF', features: [870, 2, 465, 95, 0.29, 0.69, 0.38] },
     ];
 

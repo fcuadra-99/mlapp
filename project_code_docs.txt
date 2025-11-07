@@ -1,0 +1,296 @@
+================================================================================
+           ELECTROSMART — CODE IMPLEMENTATION AND ALGORITHM WORKFLOW
+================================================================================
+
+0. INTRODUCTION
+--------------------------------------------------------------------------------
+
+ElectroSmart is a React + TypeScript web application using TensorFlow.js for 
+client-side ML. This document covers code-level implementation of six ML 
+algorithms with annotated code blocks and file references.
+
+Project Structure:
+- Frontend: React + TypeScript + Vite
+- ML Library: TensorFlow.js (@tensorflow/tfjs)
+- Additional ML: machinelearn library (Naive Bayes, Decision Trees)
+- Location: src/pages/services/[service-name]/[ServiceComponent].tsx
+
+================================================================================
+
+1. LINEAR REGRESSION — SALES FORECASTING
+================================================================================
+
+File: src/pages/services/sales-forecasting/SalesForecasting.tsx
+
+Data Schema:
+```typescript
+// [Line 27-33] Data Interface
+interface DataPoint {
+  month: string;        // Not used in training
+  ad: number;          // Advertising spend ($10k-$30k)
+  price: number;       // Product price ($92-$100)
+  season: number;      // Seasonal index (0.8-1.3)
+  sales: number;       // TARGET (52k-95k)
+}
+```
+
+Preprocessing:
+```typescript
+// [Line 81-94] Normalization
+const normalizeData = (data: number[]) => {
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  return {
+    normalized: data.map(x => (x - min) / (max - min)),
+    min, max
+  };
+};
+```
+
+Model Definition:
+```typescript
+// [Line 125-145] Sequential Model
+const model = tf.sequential();
+model.add(tf.layers.dense({ units: 64, activation: 'relu', inputShape: [3] }));
+model.add(tf.layers.dense({ units: 32, activation: 'relu' }));
+model.add(tf.layers.dense({ units: 1, activation: 'linear' }));
+
+model.compile({
+  optimizer: tf.train.adam(0.01),
+  loss: 'meanSquaredError',
+  metrics: ['mae']
+});
+```
+
+Training:
+```typescript
+// [Line 150-166] Training Loop
+await model.fit(xs, ys, {
+  epochs: 100,
+  batchSize: 4,
+  validationSplit: 0.2,
+  callbacks: { onEpochEnd: (epoch, logs) => { /* track progress */ } }
+});
+```
+
+Inference:
+```typescript
+// [Line 210-247] Prediction Function
+async function predictSales(ad: number, price: number, season: number) {
+  // Normalize inputs
+  const input = tf.tensor2d([[normalizedAd, normalizedPrice, normalizedSeason]]);
+  const prediction = model.predict(input);
+  // Denormalize result
+  return denormalize(predData[0], salesNormalized.min, salesNormalized.max);
+}
+```
+
+File Mapping:
+| Component | File Path | Lines |
+|-----------|-----------|-------|
+| Main Component | SalesForecasting.tsx | 1-624 |
+| Data Interface | SalesForecasting.tsx | 27-42 |
+| Training | SalesForecasting.tsx | 97-200 |
+| Prediction | SalesForecasting.tsx | 210-247 |
+
+================================================================================
+
+2. KNN + ANN — CUSTOMER SEGMENTATION
+================================================================================
+
+File: src/pages/services/customer-segmentation/CustomerSegmentation.tsx
+
+Data Schema:
+```typescript
+// [Line 13-21] Customer Data Interface
+interface CustomerData {
+  totalSpend: number;              // $500-$5,000
+  purchaseFrequency: number;       // 1-20/month
+  avgOrderValue: number;           // $50-$1,000
+  daysSinceLastPurchase: number;   // 1-90 days
+  techProductsRatio: number;       // 0.0-1.0
+  priceSensitivity: number;        // 0.0-1.0
+  brandLoyalty: number;            // 0.0-1.0
+}
+```
+
+Training Data Generation (1000 records, 200 per segment):
+```typescript
+// [Line 84-164] Synthetic Data Generation
+const generateTrainingData = () => {
+  const segmentsData = [
+    { name: 'Premium Tech Enthusiasts', features: [4000, 12, 333, 7, 0.9, 0.1, 0.6] },
+    { name: 'Budget Conscious', features: [1200, 6, 200, 30, 0.4, 0.9, 0.3] },
+    { name: 'Brand Loyalists', features: [2800, 10, 280, 12, 0.6, 0.4, 0.9] },
+    { name: 'Casual Shoppers', features: [1800, 4, 450, 45, 0.5, 0.6, 0.5] },
+    { name: 'Gift Buyers', features: [900, 2, 450, 90, 0.3, 0.7, 0.4] }
+  ];
+  // Generate 200 samples per segment with noise
+  return { features: tf.tensor2d(features), labels: tf.oneHot(...), segments };
+};
+```
+
+ANN Model:
+```typescript
+// [Line 181-212] Neural Network
+const annModel = tf.sequential({
+  layers: [
+    tf.layers.dense({ inputShape: [7], units: 128, activation: 'relu' }),
+    tf.layers.dropout({ rate: 0.3 }),
+    tf.layers.dense({ units: 64, activation: 'relu' }),
+    tf.layers.dropout({ rate: 0.2 }),
+    tf.layers.dense({ units: 32, activation: 'relu' }),
+    tf.layers.dense({ units: segData.length, activation: 'softmax' })
+  ]
+});
+```
+
+Training with Z-score Normalization:
+```typescript
+// [Line 173-227] Training
+const featureMean = features.mean(0);
+const featureStd = features.sub(featureMean).square().mean(0).sqrt();
+const normalizedFeatures = features.sub(featureMean).div(featureStd);
+
+await annModel.fit(normalizedFeatures, labels, {
+  epochs: 200,
+  batchSize: 32,
+  validationSplit: 0.2
+});
+```
+
+Prediction:
+```typescript
+// [Line 249-291] Segment Prediction
+const normalizedInput = inputArray.map((val, idx) =>
+  (val - model.normalizationParams.mean[idx]) / model.normalizationParams.std[idx]
+);
+const prediction = model.annModel.predict(tf.tensor2d([normalizedInput]));
+const predictedClass = scores.indexOf(Math.max(...scores));
+```
+
+File Mapping:
+| Component | File Path | Lines |
+|-----------|-----------|-------|
+| Main Component | CustomerSegmentation.tsx | 1-582 |
+| Data Generation | CustomerSegmentation.tsx | 84-164 |
+| ANN Model | CustomerSegmentation.tsx | 181-212 |
+| Training | CustomerSegmentation.tsx | 167-246 |
+| Prediction | CustomerSegmentation.tsx | 249-291 |
+
+================================================================================
+
+3. NAIVE BAYES + DECISION TREE — PRODUCT RECOMMENDATION
+================================================================================
+
+File: src/pages/services/product-recommendation/ProductRecommendation.tsx
+
+Data Schema:
+```typescript
+// [Line 14-21] Customer Data
+interface CustomerData {
+  ageGroup: string;        // teen, young_adult, adult, senior
+  budget: string;          // low, medium, high
+  techSavviness: string;   // beginner, intermediate, expert
+  primaryUse: string;      // gaming, work, entertainment, etc.
+  brandPreference: string; // gaming, apple, samsung, etc.
+  preferredCategory: string; // TARGET
+}
+```
+
+Encoding Mappings:
+```typescript
+// [Line 32-45] Category Encoding
+const ageGroupMap = { teen: 0, young_adult: 1, adult: 2, senior: 3 };
+const budgetMap = { low: 0, medium: 1, high: 2 };
+const categoryMap = { gaming: 0, laptops: 1, tablets: 2, smartphones: 3, audio: 4, cameras: 5 };
+```
+
+Training (17 records):
+```typescript
+// [Line 342-374] Train Both Models
+const features = trainingData.map(c => [
+  ageGroupMap[c.ageGroup], budgetMap[c.budget], techMap[c.techSavviness],
+  useMap[c.primaryUse], brandMap[c.brandPreference]
+]);
+const nb = new GaussianNB();  // machinelearn library
+const dt = new DecisionTreeClassifier();
+await nb.fit(features, labels);
+await dt.fit(features, labels);
+```
+
+Ensemble Prediction:
+```typescript
+// [Line 182-227] Weighted Voting
+const nbWeight = 0.9;
+const dtWeight = 0.1;
+const ensembleProbability = (nbProb * nbWeight) + (dtProb * dtWeight);
+```
+
+File Mapping:
+| Component | File Path | Lines |
+|-----------|-----------|-------|
+| Main Component | ProductRecommendation.tsx | 1-768 |
+| Naive Bayes | ProductRecommendation.tsx | 230-267 |
+| Decision Tree | ProductRecommendation.tsx | 48-102 |
+| Ensemble | ProductRecommendation.tsx | 182-227 |
+
+================================================================================
+
+4. SVM — FRAUD DETECTION
+================================================================================
+
+File: src/pages/services/fraud-detection/FraudDetection.tsx
+
+Training Data (1000 records: 500 legitimate, 500 fraudulent):
+```typescript
+// [Line 119-155] Generate Synthetic Data
+// Legitimate: amount $50-550, frequency 1-10, locationScore 1-4, label -1
+// Fraudulent: amount $800-2800, frequency 10-50, locationScore 5-10, label +1
+```
+
+SVM Training (Hinge Loss with Gradient Descent):
+```typescript
+// [Line 158-239] Train SVM
+let weights = tf.randomNormal([6]);
+let bias = 0;
+for (let epoch = 0; epoch < 1000; epoch++) {
+  const prediction = bias + weights.dot(X[i]);
+  if (y[i] * prediction >= 1) {
+    // Hinge loss: update weights with regularization
+  } else {
+    // Gradient descent update
+  }
+}
+```
+
+Prediction:
+```typescript
+// [Line 250-292] Fraud Detection
+const probability = 1 / (1 + Math.exp(-(w·x + b)));
+const isFraudulent = probability > 0.5;
+```
+
+File Mapping:
+| Component | File Path | Lines |
+|-----------|-----------|-------|
+| Main Component | FraudDetection.tsx | 1-507 |
+| Training | FraudDetection.tsx | 158-239 |
+| Prediction | FraudDetection.tsx | 250-292 |
+
+================================================================================
+
+5. INTEGRATION & ROUTING
+================================================================================
+
+Routing (src/App.tsx):
+- /services/sales-forecasting → SalesForecasting.tsx
+- /services/customer-segmentation → CustomerSegmentation.tsx
+- /services/product-recommendation → ProductRecommendation.tsx
+- /services/fraud-detection → FraudDetection.tsx
+
+All models train automatically on component mount using useEffect hooks.
+
+================================================================================
+END OF DOCUMENTATION
+================================================================================

@@ -121,7 +121,7 @@ export default function FraudDetection() {
     const labels: number[] = [];
 
     // Generate legitimate transactions (class -1 for SVM)
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 100; i++) {
       const legitimateTransaction = [
         Math.random() * 500 + 50,           // amount: $50-550
         Math.random() * 10 + 1,             // frequency: 1-10 per month
@@ -135,7 +135,7 @@ export default function FraudDetection() {
     }
 
     // Generate fraudulent transactions (class +1 for SVM)
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 100; i++) {
       const fraudulentTransaction = [
         Math.random() * 2000 + 800,         // amount: $800-2800
         Math.random() * 40 + 10,            // frequency: 10-50 per month
@@ -171,7 +171,7 @@ export default function FraudDetection() {
       // SVM parameters
       const learningRate = 0.01;
       const lambda = 0.01;
-      const epochs = 1000;
+      const epochs = 200;
 
       // Initialize weights and bias
       let weights = tf.randomNormal([6]);
