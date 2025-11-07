@@ -1,0 +1,19 @@
+[
+  { "ageGroup": "young_adult", "budget": "high", "techSavviness": "expert", "primaryUse": "gaming", "brandPreference": "gaming", "prefCategory": "gaming" },
+  { "ageGroup": "adult", "budget": "medium", "techSavviness": "intermediate", "primaryUse": "work", "brandPreference": "dell", "prefCategory": "laptops" },
+  { "ageGroup": "young_adult", "budget": "high", "techSavviness": "expert", "primaryUse": "creative", "brandPreference": "apple", "prefCategory": "laptops" },
+  { "ageGroup": "adult", "budget": "medium", "techSavviness": "intermediate", "primaryUse": "entertainment", "brandPreference": "sony", "prefCategory": "tablets" },
+  { "ageGroup": "teen", "budget": "low", "techSavviness": "beginner", "primaryUse": "social", "brandPreference": "samsung", "prefCategory": "smartphones" },
+  { "ageGroup": "senior", "budget": "medium", "techSavviness": "beginner", "primaryUse": "communication", "brandPreference": "apple", "prefCategory": "smartphones" },
+  { "ageGroup": "adult", "budget": "high", "techSavviness": "expert", "primaryUse": "photography", "brandPreference": "canon", "prefCategory": "cameras" },
+  { "ageGroup": "young_adult", "budget": "medium", "techSavviness": "intermediate", "primaryUse": "music", "brandPreference": "audio", "prefCategory": "audio" },
+  { "ageGroup": "teen", "budget": "low", "techSavviness": "beginner", "primaryUse": "gaming", "brandPreference": "gaming", "prefCategory": "gaming" },
+  { "ageGroup": "adult", "budget": "medium", "techSavviness": "expert", "primaryUse": "work", "brandPreference": "dell", "prefCategory": "laptops" },
+  { "ageGroup": "adult", "budget": "medium", "techSavviness": "intermediate", "primaryUse": "creative", "brandPreference": "apple", "prefCategory": "laptops" },
+  { "ageGroup": "senior", "budget": "low", "techSavviness": "beginner", "primaryUse": "communication", "brandPreference": "samsung", "prefCategory": "smartphones" },
+  { "ageGroup": "young_adult", "budget": "high", "techSavviness": "expert", "primaryUse": "photography", "brandPreference": "nikon", "prefCategory": "cameras" },
+  { "ageGroup": "adult", "budget": "medium", "techSavviness": "intermediate", "primaryUse": "music", "brandPreference": "audio", "prefCategory": "audio" },
+  { "ageGroup": "teen", "budget": "low", "techSavviness": "beginner", "primaryUse": "social", "brandPreference": "apple", "prefCategory": "smartphones" },
+  { "ageGroup": "adult", "budget": "high", "techSavviness": "expert", "primaryUse": "creative", "brandPreference": "sony", "prefCategory": "laptops" },
+  { "ageGroup": "senior", "budget": "medium", "techSavviness": "intermediate", "primaryUse": "photography", "brandPreference": "canon", "prefCategory": "cameras" }
+]

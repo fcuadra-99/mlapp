@@ -378,7 +378,7 @@ Training Data Columns - SVM Model:
 |                 |                  | (fraudulent)     |                                        |
 +-----------------+------------------+------------------+----------------------------------------+
 
-Training Dataset Size: 1,000 transaction records
+Training Dataset Size: 200 transaction records
   - 500 legitimate transactions (label: -1)
   - 500 fraudulent transactions (label: +1)
 Training Features: amount, frequency, locationScore, deviceRisk, 
